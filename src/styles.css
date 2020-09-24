@@ -3,3 +3,7 @@
 html,body{
     height: 90%;
 }
+
+.color-primary{
+    background-color: blue;
+}
