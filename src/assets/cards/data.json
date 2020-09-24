@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Tarjeta 1",
+        "Content": "Aqui se mostrara el texto descriptivo de la tarjeta 1, es decir, en que consiste en concreto" 
+    },
+    {
+        "name": "Tarjeta 2",
+        "Content": "Aqui se mostrara el texto descriptivo de la tarjeta 2, es decir, en que consiste en concreto" 
+    },
+    {
+        "name": "Tarjeta 3",
+        "Content": "Aqui se mostrara el texto descriptivo de la tarjeta 3, es decir, en que consiste en concreto" 
+    },
+    {
+        "name": "Tarjeta 4",
+        "Content": "Aqui se mostrara el texto descriptivo de la tarjeta 4, es decir, en que consiste en concreto" 
+    },
+    {
+        "name": "Tarjeta 5",
+        "Content": "Aqui se mostrara el texto descriptivo de la tarjeta 5, es decir, en que consiste en concreto" 
+    }
+]
