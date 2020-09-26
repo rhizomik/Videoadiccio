@@ -1,3 +1,5 @@
+import { Card } from './../../models/card.model';
+import { CardsService } from './../../services/cards.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SessionComponent implements OnInit {
 
-  constructor() { }
+  cards: Card[] = [];
+
+  constructor(private cardsService: CardsService) {
+
+    this.cardsService.getAllCards().subscribe(data => {
+      this.cards = data;
+      console.log(this.cards);
+    });
+  }
 
   ngOnInit(): void {
+
   }
 
 }

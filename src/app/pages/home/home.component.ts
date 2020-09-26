@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,8 @@ export class HomeComponent implements OnInit {
 
   usuarioNoValido = false;
 
-  constructor( private formBuilder: FormBuilder ) {
+  constructor( private formBuilder: FormBuilder,
+               private router: Router) {
     this.initForm();
    }
 
@@ -26,10 +28,11 @@ export class HomeComponent implements OnInit {
   }
 
   nuevaSesion() {
-    if (this.form.get('usuario').invalid) {
+    if (this.form.invalid) {
       this.usuarioNoValido = true;
     } else {
       this.usuarioNoValido = false;
+      this.router.navigate(['session']);
     }
   }
 
