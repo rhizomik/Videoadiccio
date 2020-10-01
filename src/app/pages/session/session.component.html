@@ -1,1 +1,69 @@
-<p>session works!</p>
+
+    <div class="row mt-3">
+        <div class="col-4"></div>
+        <div class="col-3 col-container">
+            <h5 class="text-center">Pendiente</h5>
+            <hr>
+            
+            <div class="card-container"
+                 cdkDropList
+                 #pendingList="cdkDropList"
+                 [cdkDropListConnectedTo]="[category1List, category2List, category3List]"
+                 [cdkDropListData]="cards"
+                 (cdkDropListDropped)="onDrop($event)">
+
+                <app-card *ngFor="let card of cards" [card]="card" cdkDrag></app-card>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row pt-5">
+        <div class="col-1"></div>
+        <div class="col-3" style="padding-left: 100px;">
+            <h5 class="text-center">Categoria 1</h5>
+            <hr>
+            
+            <div class="card-container"
+                 cdkDropList
+                 #category1List="cdkDropList"
+                 [cdkDropListConnectedTo]="[pendingList, category2List, category3List]"
+                 [cdkDropListData]="category1"
+                 (cdkDropListDropped)="onDrop($event)">
+
+                    <app-card *ngFor="let card of category1"
+                            [card]="card" cdkDrag>
+                    </app-card>
+            </div>
+        </div>
+    
+        <div class="col-3" style="padding-left: 100px;">
+            <h5 class="text-center">Categoria 2</h5>
+            <hr>
+            
+            <div class="card-container"
+                 cdkDropList
+                 #category2List="cdkDropList"
+                 [cdkDropListConnectedTo]="[pendingList, category1List, category3List]"
+                 [cdkDropListData]="category2"
+                 (cdkDropListDropped)="onDrop($event)">
+
+                <app-card *ngFor="let card of category2"  [card]="card" cdkDrag></app-card>
+            </div>
+        </div>
+
+        <div class="col-3" style="padding-left: 100px;">
+            <h5 class="text-center">Categoria 3</h5>
+            <hr>
+            
+            <div class="card-container"
+                 cdkDropList
+                 #category3List="cdkDropList"
+                 [cdkDropListConnectedTo]="[pendingList, category1List, category2List]"
+                 [cdkDropListData]="category3"
+                 (cdkDropListDropped)="onDrop($event)">
+
+                <app-card *ngFor="let card of category3"  [card]="card" cdkDrag></app-card>
+            </div>
+        </div>
+    </div>  
+
