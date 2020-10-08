@@ -1,22 +1,17 @@
 [
     {
         "name": "Tarjeta 1",
-        "content": "Aqui se mostrara el texto descriptivo de la tarjeta 1, es decir, en que consiste en concreto" 
+        "content": "../../../assets/img/riesgos_abstinencia.jpg",
+        "type": "Hook" 
     },
     {
         "name": "Tarjeta 2",
-        "content": "Aqui se mostrara el texto descriptivo de la tarjeta 2, es decir, en que consiste en concreto" 
+        "content": "../../../assets/img/catalyst_aleatoriedad.jpg",
+        "type": "Catalyst" 
     },
     {
         "name": "Tarjeta 3",
-        "content": "Aqui se mostrara el texto descriptivo de la tarjeta 3, es decir, en que consiste en concreto" 
-    },
-    {
-        "name": "Tarjeta 4",
-        "content": "Aqui se mostrara el texto descriptivo de la tarjeta 4, es decir, en que consiste en concreto" 
-    },
-    {
-        "name": "Tarjeta 5",
-        "content": "Aqui se mostrara el texto descriptivo de la tarjeta 5, es decir, en que consiste en concreto" 
+        "content": "../../../assets/img/risc_botonpausa.jpg",
+        "type": "Risc" 
     }
 ]

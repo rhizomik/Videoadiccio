@@ -1,0 +1,13 @@
+
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div *ngFor="let card of cards" 
+             class="swiper-slide">
+             <img [src]="card.content" class="img-fluid">
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+
+    <div (click)="onSlidePrev()" class="swiper-button-prev"></div>
+    <div (click)="onSlideNext()" class="swiper-button-next"></div>
+</div>

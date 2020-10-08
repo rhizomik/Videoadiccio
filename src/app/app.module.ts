@@ -10,7 +10,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SessionComponent } from './pages/session/session.component';
-import { CardComponent } from './components/card/card.component';
+import { SlideshowComponent } from './components/slideshow/slideshow.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { CardComponent } from './components/card/card.component';
     FooterComponent,
     HomeComponent,
     SessionComponent,
-    CardComponent
+    SlideshowComponent
   ],
   imports: [
     BrowserModule,
