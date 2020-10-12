@@ -4,8 +4,14 @@
     <hr>
     <div class="row pt-4">
         <div class="col-12">
-            <app-slideshow [cards]="cards"></app-slideshow>
+            <app-slideshow [cards]="cards" (selectedCard)="getCardSelected($event)"></app-slideshow>
         </div>
     </div>
+</div>
+
+<div class="container pt-5">
+    <h2 class="text-center">Progreso</h2>
+    <hr>
+    <app-historical-session [relationCards]="relationCards" ></app-historical-session>
 </div>
 

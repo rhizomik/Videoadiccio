@@ -11,6 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SessionComponent } from './pages/session/session.component';
 import { SlideshowComponent } from './components/slideshow/slideshow.component';
+import { HistoricalSessionComponent } from './components/historical-session/historical-session.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SlideshowComponent } from './components/slideshow/slideshow.component';
     FooterComponent,
     HomeComponent,
     SessionComponent,
-    SlideshowComponent
+    SlideshowComponent,
+    HistoricalSessionComponent
   ],
   imports: [
     BrowserModule,

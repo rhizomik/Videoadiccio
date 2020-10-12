@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Card } from 'src/app/models/card.model';
 import { Swiper } from 'swiper/bundle';
 
@@ -14,11 +14,15 @@ export class SlideshowComponent implements OnInit {
 
   mySwiper: Swiper;
 
+  @Output()
+  selectedCard = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
     this.configureSwiper();
   }
+
   configureSwiper() {
     this.mySwiper = new Swiper('.swiper-container', {
       loop: true,
@@ -52,4 +56,8 @@ export class SlideshowComponent implements OnInit {
     this.mySwiper.slidePrev();
   }
 
+  addCard() {
+    const currentSlide = this.mySwiper.activeIndex;
+    this.selectedCard.emit( { card: this.cards[currentSlide] } );
+  }
 }
