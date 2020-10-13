@@ -1,17 +1,17 @@
 [
     {
         "name": "Tarjeta 1",
-        "content": "../../../assets/img/riesgos_abstinencia.jpg",
-        "type": "Hook" 
+        "content": "../../../assets/img/enganche_botonpausa.jpg",
+        "type": "Hook"
     },
     {
         "name": "Tarjeta 2",
-        "content": "../../../assets/img/catalyst_aleatoriedad.jpg",
-        "type": "Catalyst" 
+        "content": "../../../assets/img/riesgos_abstinencia.jpg",
+        "type": "Risc"
     },
     {
         "name": "Tarjeta 3",
-        "content": "../../../assets/img/risc_botonpausa.jpg",
-        "type": "Risc" 
+        "content": "../../../assets/img/catalyst_aleatoriedad.jpg",
+        "type": "Catalyst"
     }
 ]
