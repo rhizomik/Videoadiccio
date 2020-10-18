@@ -17,6 +17,8 @@ export class SlideshowComponent implements OnInit {
   @Output()
   selectedCard = new EventEmitter();
 
+  showAdd = true;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -58,6 +60,12 @@ export class SlideshowComponent implements OnInit {
 
   addCard() {
     const currentSlide = this.mySwiper.activeIndex;
-    this.selectedCard.emit( { card: this.cards[currentSlide] } );
+    this.mySwiper.activeIndex = 0;
+    this.selectedCard.emit({ card: this.cards[currentSlide] });
+    
+    if (this.cards[currentSlide].type === 'Catalyst') {
+      this.showAdd = false;
+    }
   }
+  
 }

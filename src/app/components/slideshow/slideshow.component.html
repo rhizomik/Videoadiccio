@@ -12,8 +12,13 @@
     <div (click)="onSlideNext()" class="swiper-button-next"></div>
 </div>
 
-<div class="text-center">
-    <button type="submit" class="btn btn-primary" (click)="addCard()">
-        Añadir
-    </button>
+<div class="row pt-2">
+    <div [ngStyle]="{'visibility': showAdd ? 'visible' : 'hidden'}" 
+         class="col-12 text-center">
+        <button type="submit" 
+                class="btn-lg btn-primary" 
+                (click)="addCard()">
+            Añadir
+        </button>
+    </div>
 </div>

@@ -11,13 +11,11 @@ export class HistoricalSessionComponent implements OnInit {
   @Input()
   relationCards: RelationCards;
 
+  @Input()
+  disabledCards: boolean;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  prueba() {
-    console.log('Hola Mundo');
-  }
-
 }

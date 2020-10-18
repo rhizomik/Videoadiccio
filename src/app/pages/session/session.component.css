@@ -1,0 +1,33 @@
+.container-fluid {
+    max-width: 95%;
+    height: 55%;
+}
+
+.container {
+    min-width: 70%;
+}
+
+.type-card-hook, 
+.type-card-risk,
+.type-card-catalyts {
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+.type-card-hook {
+    background-color: red;
+}
+
+.type-card-risk {
+    background-color: blue;
+}
+
+.type-card-catalyts {
+    background-color: greenyellow;
+}
+
+.saveButton{
+    float: right;
+    padding-right: 150px;
+}

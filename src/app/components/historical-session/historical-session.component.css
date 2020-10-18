@@ -8,7 +8,7 @@
 }
 
 .zoom:hover {
-  -ms-transform: scale(2.2); /* IE 9 */
-  -webkit-transform: scale(2.2); /* Safari and Chrome */
-  transform: scale(2.2); 
+  -ms-transform: scale(1.8); /* IE 9 */
+  -webkit-transform: scale(1.8); /* Safari and Chrome */
+  transform: scale(1.8); 
 }
