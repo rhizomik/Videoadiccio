@@ -1,3 +1,4 @@
+import { StorageService } from './../../services/storage.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,7 +15,8 @@ export class HomeComponent implements OnInit {
   usuarioNoValido = false;
 
   constructor( private formBuilder: FormBuilder,
-               private router: Router) {
+               private router: Router, 
+               private storageService: StorageService) {
     this.initForm();
    }
 
@@ -32,6 +34,8 @@ export class HomeComponent implements OnInit {
       this.usuarioNoValido = true;
     } else {
       this.usuarioNoValido = false;
+      
+      this.storageService.resetRelationsHistory();
       this.router.navigate(['session']);
     }
   }

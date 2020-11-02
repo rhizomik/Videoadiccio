@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { SessionComponent } from './pages/session/session.component';
 import { SlideshowComponent } from './components/slideshow/slideshow.component';
 import { HistoricalSessionComponent } from './components/historical-session/historical-session.component';
+import { HistoryRelationsComponent } from './pages/history-relations/history-relations.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HistoricalSessionComponent } from './components/historical-session/hist
     HomeComponent,
     SessionComponent,
     SlideshowComponent,
-    HistoricalSessionComponent
+    HistoricalSessionComponent,
+    HistoryRelationsComponent
   ],
   imports: [
     BrowserModule,

@@ -56,16 +56,50 @@
     </div>
 </div>
 
-<div class="container pt-5">
-        <h2 class="text-center">Progreso</h2>
-        <hr>
-        <app-historical-session 
-            [relationCards]="relationCards" 
-            [disabledCards]="continue"></app-historical-session>            
+<div class="container pt-5" style="padding-left: 140px;">
+    <div class="row">
+        <div class="col-11">
+            <h2 class="text-center">Progreso</h2>
+            <hr>
+            <div class="row text-center">
+                <div class="col-4">
+                    <h5>Hooks</h5>
+                    <hr>
+                </div>
+                <div class="col-4">
+                    <h5>Risks</h5>
+                    <hr>
+                </div>
+                <div class="col-4">
+                    <h5>Catalysts</h5>
+                    <hr>
+                </div>
+            </div>
+
+            <app-historical-session
+                [active]="relation" 
+                [disabledCards]="continue"></app-historical-session> 
+
+        </div>
+        <div class="col-1">
+            <div *ngIf="showSave" class="saveButton">
+                <button (click)="selectNextType()" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div *ngIf="showSave" class="saveButton">
-    <button (click)="selectNextType()" class="btn-lg btn-primary">Guardar</button>
+<div class="pt-2">
+    <div class="row pt-5">
+        <div class="col-6 text-right">
+            <button [routerLink]="['history']"         
+                    class="btn btn-primary">Historico</button>
+        </div>
+        <div class="col-6">
+            <button [routerLink]="['home']" 
+                    class="btn btn-primary">Finalizar</button>
+        </div>
+    </div>
 </div>
 
 

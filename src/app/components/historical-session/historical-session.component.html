@@ -1,29 +1,26 @@
 
 <div class="row text-center">
     <div class="col-4">
-        <h5>Hook</h5>
-        <div class="zoom">
+        <div [class.zoom]="!disabledCards && active.hook.name !== 'default'">
             <img [ngStyle]="{'opacity': disabledCards ? '0.2' : '1'}"  
-                 *ngIf="relationCards.hook" 
-                 [src]="relationCards.hook.content" 
+                 *ngIf="active.hook" 
+                 [src]="active.hook.content" 
                  class="img-fluid">
         </div>
     </div>
     <div class="col-4">
-        <h5>Risk</h5>
-        <div class="zoom">
+        <div [class.zoom]="!disabledCards">
             <img [ngStyle]="{'opacity': disabledCards ? '0.2' : '1'}" 
-                 *ngIf="relationCards.risc" 
-                 [src]="relationCards.risc.content" 
+                 *ngIf="active.risc" 
+                 [src]="active.risc.content" 
                  class="img-fluid">
         </div>
     </div>
     <div class="col-4">
-        <h5>Catalyst</h5>
-        <div class="zoom">
+        <div [class.zoom]="!disabledCards">
             <img [ngStyle]="{'opacity': disabledCards ? '0.2' : '1'}" 
-                 *ngIf="relationCards.catalyst" 
-                 [src]="relationCards.catalyst.content" 
+                 *ngIf="active.catalyst" 
+                 [src]="active.catalyst.content" 
                  class="img-fluid">
         </div>
     </div>

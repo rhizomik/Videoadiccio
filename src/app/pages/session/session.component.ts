@@ -1,3 +1,4 @@
+import { StorageService } from './../../services/storage.service';
 import { RelationCards } from './../../models/relationCards.model';
 import { Component, OnInit } from '@angular/core';
 import { Card } from './../../models/card.model';
@@ -19,17 +20,27 @@ export class SessionComponent implements OnInit {
   showSave = false;
   continue = false;
 
-  relationCards: RelationCards = new RelationCards();
+  defaultCard: Card = new Card();
 
-  constructor(private cardsService: CardsService) { }
+  relation: RelationCards;
+
+  constructor(private cardsService: CardsService,
+              private storageService: StorageService) { }
   
   ngOnInit(): void {
     this.cardsService.getAllCards().subscribe(data => {
       this.setCardsByType(data);
     });
+
+    this.relation = new RelationCards();
+
+    this.defaultCard.name = 'default';
+    this.defaultCard.content = '../../../assets/img/plantilla.png';
+    this.defaultCard.type = 'Hook';
+    this.relation.hook = this.defaultCard;
   }
 
-  setCardsByType(data: Card[]) {
+  private setCardsByType(data: Card[]) {
     data.forEach(card => {
       switch (card.type) {
         case 'Hook':
@@ -47,17 +58,17 @@ export class SessionComponent implements OnInit {
   getCardSelected(event): void {
     switch (event.card.type) {
       case 'Hook':
-        this.relationCards.hook = event.card;
+        this.relation.hook = event.card;
         this.typeCard = 'Risk';
         this.activeCards = this.risks;
         break;
       case 'Risk':
-        this.relationCards.risc = event.card;
+        this.relation.risc = event.card;
         this.typeCard = 'Catalyst';
         this.activeCards = this.catalysts;
         break;
       case 'Catalyst':
-        this.relationCards.catalyst = event.card;
+        this.relation.catalyst = event.card;
         this.showSave = true;
     }
   }
@@ -65,25 +76,28 @@ export class SessionComponent implements OnInit {
   selectNextType() {
     this.showSave = false;
     this.continue = true;
+    this.storageService.saveRelation(this.relation);
   }
 
   nextIterationType(type: string) {
+    const prevHook = this.relation.hook;
+    const prevRisk = this.relation.risc;
+    this.relation = new RelationCards();
+
     switch (type) {
       case 'Hook':
-        this.relationCards.hook = null;
-        this.relationCards.risc = null;
-        this.relationCards.catalyst = null;
+        this.relation.hook = this.defaultCard;
         this.typeCard = 'Hook';
         this.activeCards = this.hooks;
         break;
       case 'Risk':
-        this.relationCards.risc = null;
-        this.relationCards.catalyst = null;
+        this.relation.hook = prevHook;
         this.typeCard = 'Risk';
         this.activeCards = this.risks;
         break;
       case 'Catalyst':
-        this.relationCards.catalyst = null;
+        this.relation.hook = prevHook;
+        this.relation.risc = prevRisk;
         this.typeCard = 'Catalyst';
         this.activeCards = this.catalysts;
     }

@@ -9,7 +9,7 @@ import { RelationCards } from './../../models/relationCards.model';
 export class HistoricalSessionComponent implements OnInit {
 
   @Input()
-  relationCards: RelationCards;
+  active: RelationCards;
 
   @Input()
   disabledCards: boolean;
@@ -17,5 +17,6 @@ export class HistoricalSessionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 }
