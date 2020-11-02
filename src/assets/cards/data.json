@@ -1,137 +1,137 @@
 [
     {
         "name": "La vida no tiene boton de pausa",
-        "content": "../../../assets/img/hooks/enganche_botonpausa.jpg",
+        "content": "assets/img/hooks/enganche_botonpausa.jpg",
         "type": "Hook"
     },
     {
         "name": "Cuidador",
-        "content": "../../../assets/img/hooks/enganche_cuidador.jpg",
+        "content": "assets/img/hooks/enganche_cuidador.jpg",
         "type": "Hook"
     },
     {
         "name": "Como dibujos animados",
-        "content": "../../../assets/img/hooks/enganche_dibujos.jpg",
+        "content": "assets/img/hooks/enganche_dibujos.jpg",
         "type": "Hook"
     },
     {
         "name": "La emocion de la caza",
-        "content": "../../../assets/img/hooks/enganche_emocion.jpg",
+        "content": "assets/img/hooks/enganche_emocion.jpg",
         "type": "Hook"
     },
     {
         "name": "Instinto de Supervivencia",
-        "content": "../../../assets/img/hooks/enganche_instinto.jpg",
+        "content": "assets/img/hooks/enganche_instinto.jpg",
         "type": "Hook"
     },
     {
         "name": "Juego emergente",
-        "content": "../../../assets/img/hooks/enganche_juego_emergente.jpg",
+        "content": "assets/img/hooks/enganche_juego_emergente.jpg",
         "type": "Hook"
     },
     {
         "name": "Miedo a decepcionar a los otros",
-        "content": "../../../assets/img/hooks/enganche_miedo.jpg",
+        "content": "assets/img/hooks/enganche_miedo.jpg",
         "type": "Hook"
     },
     {
         "name": "Esperando hasta la proxima partida",
-        "content": "../../../assets/img/hooks/enganche_p_partida.jpg",
+        "content": "assets/img/hooks/enganche_p_partida.jpg",
         "type": "Hook"
     },
     {
         "name": "Personalizacion",
-        "content": "../../../assets/img/hooks/enganche_personalizacion.jpg",
+        "content": "assets/img/hooks/enganche_personalizacion.jpg",
         "type": "Hook"
     },
     {
         "name": "La promesa de recompensas",
-        "content": "../../../assets/img/hooks/enganche_recompensa.jpg",
+        "content": "assets/img/hooks/enganche_recompensa.jpg",
         "type": "Hook"
     },
     {
         "name": "Solo una partida mas...",
-        "content": "../../../assets/img/hooks/enganche_unapartidamas.jpg",
+        "content": "assets/img/hooks/enganche_unapartidamas.jpg",
         "type": "Hook"
     },
     {
         "name": "Abstinencia",
-        "content": "../../../assets/img/risks/riesgos_abstinencia.jpg",
+        "content": "assets/img/risks/riesgos_abstinencia.jpg",
         "type": "Risk"
     },
     {
         "name": "Tus datos nos pertenecen",
-        "content": "../../../assets/img/risks/riesgos_datos.jpg",
+        "content": "assets/img/risks/riesgos_datos.jpg",
         "type": "Risk"
     },
     {
         "name": "Desensibilizacion",
-        "content": "../../../assets/img/risks/riesgos_desensibilizacion.jpg",
+        "content": "assets/img/risks/riesgos_desensibilizacion.jpg",
         "type": "Risk"
     },
     {
         "name": "Pega como una droga",
-        "content": "../../../assets/img/risks/riesgos_droga.jpg",
+        "content": "assets/img/risks/riesgos_droga.jpg",
         "type": "Risk"
     },
     {
         "name": "Refuerzo de los prejuicios",
-        "content": "../../../assets/img/risks/riesgos_prejuicios.jpg",
+        "content": "assets/img/risks/riesgos_prejuicios.jpg",
         "type": "Risk"
     },
     {
         "name": "Stress emocional",
-        "content": "../../../assets/img/risks/riesgos_stress.jpg",
+        "content": "assets/img/risks/riesgos_stress.jpg",
         "type": "Risk"
     },
     {
         "name": "Tensiones sociales",
-        "content": "../../../assets/img/risks/riesgos_tensionsocial.jpg",
+        "content": "assets/img/risks/riesgos_tensionsocial.jpg",
         "type": "Risk"
     },
     {
         "name": "Es como una tragaperras",
-        "content": "../../../assets/img/risks/riesgos_tragaperras.jpg",
+        "content": "assets/img/risks/riesgos_tragaperras.jpg",
         "type": "Risk"
     },
     {
         "name": "Aleatoriedad",
-        "content": "../../../assets/img/catalysts/catalyst_aleatoriedad.jpg",
+        "content": "assets/img/catalysts/catalyst_aleatoriedad.jpg",
         "type": "Catalyst"
     },
     {
         "name": "Publico joven",
-        "content": "../../../assets/img/catalysts/catalyst_joven.jpg",
+        "content": "assets/img/catalysts/catalyst_joven.jpg",
         "type": "Catalyst"
     },
     {
         "name": "Microtransacciones",
-        "content": "../../../assets/img/catalysts/catalyst_micro.jpg",
+        "content": "assets/img/catalysts/catalyst_micro.jpg",
         "type": "Catalyst"
     },
     {
         "name": "Es la moda",
-        "content": "../../../assets/img/catalysts/catalyst_moda.jpg",
+        "content": "assets/img/catalysts/catalyst_moda.jpg",
         "type": "Catalyst"
     },
     {
         "name": "Red social",
-        "content": "../../../assets/img/catalysts/catalyst_redsocial.jpg",
+        "content": "assets/img/catalysts/catalyst_redsocial.jpg",
         "type": "Catalyst"
     },
     {
         "name": "Software como servicio",
-        "content": "../../../assets/img/catalysts/catalyst_servicio.jpg",
+        "content": "assets/img/catalysts/catalyst_servicio.jpg",
         "type": "Catalyst"
     },
     {
         "name": "En cualquier sitio, a cualquier hora",
-        "content": "../../../assets/img/catalysts/catalyst_sitio_hora.jpg",
+        "content": "assets/img/catalysts/catalyst_sitio_hora.jpg",
         "type": "Catalyst"
     },
     {
         "name": "Cultura de Streaming",
-        "content": "../../../assets/img/catalysts/catalyst_streaming.jpg",
+        "content": "assets/img/catalysts/catalyst_streaming.jpg",
         "type": "Catalyst"
     }
 ]

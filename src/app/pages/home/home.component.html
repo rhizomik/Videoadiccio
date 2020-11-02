@@ -1,19 +1,19 @@
 
 <div class="row no-gutters justify-content-center h-100">
     <div class="col-12 col-lg-6 align-self-center">
-        <img src="../../assets/img/portada.jpg" class="img-fluid">
+        <img src="assets/img/portada.jpg" class="img-fluid">
     </div>
     <div class="col-12 col-lg-4 align-self-center">
         <form [formGroup]="form" (ngSubmit)="nuevaSesion()">
             <h2 class="text-center">¿Por donde empiezo?</h2>
             <div class="row pt-3 text-center">
                 <div class="pl-3"></div>
-                <input class="col-7 form-control" 
+                <input class="col-7 form-control"
                 type="text"
                 placeholder="Introduce un nombre de usuario"
                 formControlName="usuario"
                 [class.is-invalid]="usuarioNoValido">
-                
+
                 <div class="input-group col-4">
                     <button type="submit" class="btn btn-outline-primary btn-block">Nueva sesión</button>
                 </div>
