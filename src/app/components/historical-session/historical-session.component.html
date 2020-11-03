@@ -1,0 +1,27 @@
+
+<div class="row text-center">
+    <div class="col-4">
+        <div [class.zoom]="!disabledCards && active.hook.name !== 'default'">
+            <img [ngStyle]="{'opacity': disabledCards ? '0.2' : '1'}"  
+                 *ngIf="active.hook" 
+                 [src]="active.hook.content" 
+                 class="img-fluid">
+        </div>
+    </div>
+    <div class="col-4">
+        <div [class.zoom]="!disabledCards">
+            <img [ngStyle]="{'opacity': disabledCards ? '0.2' : '1'}" 
+                 *ngIf="active.risc" 
+                 [src]="active.risc.content" 
+                 class="img-fluid">
+        </div>
+    </div>
+    <div class="col-4">
+        <div [class.zoom]="!disabledCards">
+            <img [ngStyle]="{'opacity': disabledCards ? '0.2' : '1'}" 
+                 *ngIf="active.catalyst" 
+                 [src]="active.catalyst.content" 
+                 class="img-fluid">
+        </div>
+    </div>
+</div>

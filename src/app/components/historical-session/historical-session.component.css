@@ -1,0 +1,14 @@
+
+.row .col-4:hover {
+    z-index: 1;
+}
+
+.zoom {
+    transition: transform .3s;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.8); /* IE 9 */
+  -webkit-transform: scale(1.8); /* Safari and Chrome */
+  transform: scale(1.8); 
+}

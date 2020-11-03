@@ -1,0 +1,31 @@
+
+<div class="row no-gutters justify-content-center h-100">
+    <div class="col-12 col-lg-6 align-self-center">
+        <img src="assets/img/portada.jpg" class="img-fluid">
+    </div>
+    <div class="col-12 col-lg-4 align-self-center">
+        <form [formGroup]="form" (ngSubmit)="nuevaSesion()">
+            <h2 class="text-center">¿Por donde empiezo?</h2>
+            <div class="row pt-3 text-center">
+                <div class="pl-3"></div>
+                <input class="col-7 form-control"
+                type="text"
+                placeholder="Introduce un nombre de usuario"
+                formControlName="usuario"
+                [class.is-invalid]="usuarioNoValido">
+
+                <div class="input-group col-4">
+                    <button type="submit" class="btn btn-outline-primary btn-block">Nueva sesión</button>
+                </div>
+            </div>
+            <small *ngIf="usuarioNoValido" class="pl-2 text-danger">El nombre no es valido, vuelve a intentarlo</small>
+        </form>
+        <h2 class="pt-5">Descubre los factores asociados a la videoadicción</h2>
+        <p class="pt-3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error impedit perspiciatis corrupti dignissimos voluptates facilis suscipit ullam esse repellendus, beatae a nemo explicabo veniam repellat est illo iusto. Esse error laudantium, a alias autem quod itaque voluptatum enim accusantium rem nemo dignissimos, similique adipisci modi dicta illo, tempore quasi facere?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio voluptatem libero illum aliquam? Voluptatem consectetur blanditiis enim! Illum, magni dolor? Dicta exercitationem natus quidem aliquid fugiat. Quis repellendus hic recusandae neque. Quisquam nihil at iusto, repellendus asperiores numquam quaerat sunt fugit. Repudiandae fugit, dignissimos sequi itaque quis unde suscipit velit.
+        </p>
+    </div>
+</div>
