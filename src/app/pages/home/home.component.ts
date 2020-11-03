@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
     } else {
       this.usuarioNoValido = false;
       
-      this.storageService.resetRelationsHistory();
+      // this.storageService.resetRelationsHistory();
       this.router.navigate(['session']);
     }
   }
