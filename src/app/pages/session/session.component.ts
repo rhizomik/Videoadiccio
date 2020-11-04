@@ -35,7 +35,7 @@ export class SessionComponent implements OnInit {
     this.relation = new RelationCards();
 
     this.defaultCard.name = 'default';
-    this.defaultCard.content = '../../../assets/img/plantilla.png';
+    this.defaultCard.content = 'assets/img/plantilla.png';
     this.defaultCard.type = 'Hook';
     this.relation.hook = this.defaultCard;
   }
