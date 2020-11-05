@@ -8,9 +8,7 @@ export class StorageService {
 
   relationsHistory: RelationCards[] = [];
 
-  constructor() { 
-    this.relationsHistory = JSON.parse(localStorage.getItem('historyRelations'));
-  }
+  constructor() { }
 
   getRelationsHistory() {
     this.relationsHistory = JSON.parse(localStorage.getItem('historyRelations'));
@@ -21,8 +19,9 @@ export class StorageService {
     this.relationsHistory.push(relation);
     localStorage.setItem('historyRelations', JSON.stringify(this.relationsHistory));
   }
-
+  
   resetRelationsHistory() {
     this.relationsHistory = [];
+    localStorage.setItem('historyRelations', JSON.stringify(this.relationsHistory));
   }
 }

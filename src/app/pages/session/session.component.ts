@@ -1,8 +1,11 @@
+import { Router } from '@angular/router';
 import { StorageService } from './../../services/storage.service';
 import { RelationCards } from './../../models/relationCards.model';
 import { Component, OnInit } from '@angular/core';
 import { Card } from './../../models/card.model';
 import { CardsService } from './../../services/cards.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogBoxComponent } from 'src/app/components/dialog-box/dialog-box.component';
 
 @Component({
   selector: 'app-session',
@@ -25,8 +28,10 @@ export class SessionComponent implements OnInit {
   relation: RelationCards;
 
   constructor(private cardsService: CardsService,
-              private storageService: StorageService) { }
-  
+              private storageService: StorageService,
+              private dialog: MatDialog,
+              private router: Router) { }
+
   ngOnInit(): void {
     this.cardsService.getAllCards().subscribe(data => {
       this.setCardsByType(data);
@@ -102,6 +107,25 @@ export class SessionComponent implements OnInit {
         this.activeCards = this.catalysts;
     }
     this.continue = false;
+  }
+
+  finishDialog() {
+      const dialogRef = this.dialog.open(DialogBoxComponent, {
+      disableClose: true,
+      data: {
+        title: 'Finalizar sesion',
+        message: '¿Esta seguro que quiere finalizar la sesión?',
+        okButton: 'Finalizar',
+        noOkButton: 'Cancelar'
+      }
+      });
+
+      dialogRef.afterClosed().subscribe(res => {
+        if (res) {
+          this.storageService.resetRelationsHistory();
+          this.router.navigate(['home']);
+        }
+      });
   }
 
 }
