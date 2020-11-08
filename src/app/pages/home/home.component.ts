@@ -13,9 +13,11 @@ import { StorageService } from './../../services/storage.service';
 })
 export class HomeComponent implements OnInit {
 
+  title = 'Concienciamiento de los factores implicados en la videodicción';
+
   form: FormGroup;
 
-  usuarioNoValido = false;
+  submitted = false;
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -55,18 +57,23 @@ export class HomeComponent implements OnInit {
 
   initForm(): void {
     this.form = this.formBuilder.group({
-      usuario: ['', Validators.required]
+      usuario: ['', Validators.required],
+      juego: ['', Validators.required]
     });
   }
 
-  nuevaSesion(): void {
-    if (this.form.invalid) {
-      this.usuarioNoValido = true;
-    } else {
-      this.usuarioNoValido = false;
+  get fields() {
+    return this.form.controls;
+  }
+
+  newSession(): void {
+    this.submitted = true;
+
+    if (this.form.valid) {
+      this.storageService.setUser(this.fields.usuario.value);
+      this.storageService.setGame(this.fields.juego.value);
 
       this.router.navigate(['session']);
     }
   }
-
 }

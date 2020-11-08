@@ -1,4 +1,6 @@
 
+<app-navbar [isTitle]="false" [user]="user" [game]="game"></app-navbar>
+
 <div *ngIf="!continue" class="container-fluid pt-4">
     <div class="row">
         <div class="col-2"></div>
@@ -99,5 +101,6 @@
             <button class="btn btn-primary" (click)="finishDialog()">Finalizar</button>
         </div>
     </div>
-
 </div>
+
+<app-footer class="fixed-bottom"></app-footer>

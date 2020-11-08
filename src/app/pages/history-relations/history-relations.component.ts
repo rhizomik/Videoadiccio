@@ -10,11 +10,17 @@ import { StorageService } from './../../services/storage.service';
 })
 export class HistoryRelationsComponent implements OnInit {
 
+  user: string;
+  game: string;
+
   history: RelationCards[];
 
   constructor(private storageService: StorageService) { }
 
   ngOnInit(): void {
+    this.user = this.storageService.getUser();
+    this.game = this.storageService.getGame();
+
     this.history = this.storageService.getRelationsHistory();
   }
 

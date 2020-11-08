@@ -14,6 +14,9 @@ import { DialogBoxComponent } from 'src/app/components/dialog-box/dialog-box.com
 })
 export class SessionComponent implements OnInit {
 
+  user: string;
+  game: string;
+
   hooks: Card[] = [];
   risks: Card[] = [];
   catalysts: Card[] = [];
@@ -33,6 +36,9 @@ export class SessionComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    this.user = this.storageService.getUser();
+    this.game = this.storageService.getGame();
+
     this.cardsService.getAllCards().subscribe(data => {
       this.setCardsByType(data);
     });
