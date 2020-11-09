@@ -1,26 +1,29 @@
 
 <app-navbar [isTitle]="false" [user]="user" [game]="game"></app-navbar>
 
-<div *ngIf="!continue" class="container-fluid pt-4">
+<div class="container-fluid pt-4">
     <div class="row">
         <div class="col-2"></div>
         <div class="col-2 text-center">
-            <div *ngIf="typeCard === 'Hook'"
-                 class="type-card-hook">
+            <div [ngStyle]="{'opacity': typeCard !== 'Hook' ? '0.3' : '1'}"
+                 class="type-card-hook"
+                 (click)="nextIterationType('Hook')">
                 <h2>Hooks</h2>
             </div>
         </div>
         <div class="col-1"></div>
         <div class="col-2 text-center">
-            <div *ngIf="typeCard === 'Risk'"
-                 class="type-card-risk">
+            <div [ngStyle]="{'opacity': typeCard !== 'Risk' ? '0.3' : '1'}"
+                 class="type-card-risk"
+                 (click)="nextIterationType('Risk')">
                 <h2>Risks</h2>
             </div>
         </div>
         <div class="col-1"></div>
         <div class="col-2 text-center">
-            <div *ngIf="typeCard === 'Catalyst'"
-                 class="type-card-catalyts">
+            <div [ngStyle]="{'opacity': typeCard !== 'Catalyst' ? '0.3' : '1'}"
+                 class="type-card-catalyts"
+                 (click)="nextIterationType('Catalyst')">
                 <h2>Catalysts</h2>
             </div>
         </div>
@@ -29,31 +32,9 @@
     <div class="row pt-4">
         <div class="col-12">
             <app-slideshow [cards]="activeCards"
-                           (selectedCard)="getCardSelected($event)"></app-slideshow>
-        </div>
-    </div>
-</div>
-
-<div *ngIf="continue" class="container-fluid" style="padding-top: 100px;">
-    <h1 class="text-center">Continuar con: </h1>
-    <div class="row" style="padding-top: 100px;">
-        <div class="col-2"></div>
-        <div class="col-2 text-center">
-            <div (click)="nextIterationType('Hook')" class="type-card-hook">
-                <h2>Hooks</h2>
-            </div>
-        </div>
-        <div class="col-1"></div>
-        <div class="col-2 text-center">
-            <div (click)="nextIterationType('Risk')" class="type-card-risk">
-                <h2>Risks</h2>
-            </div>
-        </div>
-        <div class="col-1"></div>
-        <div class="col-2 text-center">
-            <div (click)="nextIterationType('Catalyst')" class="type-card-catalyts">
-                <h2>Catalysts</h2>
-            </div>
+                           (selectedCard)="getCardSelected($event)"
+                           [showAdd]="showAdd"
+                           [ngStyle]="{'visibility': continue ? 'hidden' : 'visible'}" ></app-slideshow>
         </div>
     </div>
 </div>
@@ -61,19 +42,19 @@
 <div class="container pt-5" style="padding-left: 140px;">
     <div class="row">
         <div class="col-11">
-            <h2 class="text-center">Progreso</h2>
+            <h4 class="text-center">Progreso</h4>
             <hr>
             <div class="row text-center">
                 <div class="col-4">
-                    <h5>Hooks</h5>
+                    <h6>Hooks</h6>
                     <hr>
                 </div>
                 <div class="col-4">
-                    <h5>Risks</h5>
+                    <h6>Risks</h6>
                     <hr>
                 </div>
                 <div class="col-4">
-                    <h5>Catalysts</h5>
+                    <h6>Catalysts</h6>
                     <hr>
                 </div>
             </div>
@@ -91,8 +72,8 @@
     </div>
 </div>
 
-<div class="pt-2">
-    <div class="row pt-5">
+<div class="pt-4">
+    <div class="row">
         <div class="col-6 text-right">
             <button [routerLink]="['history']"
                     class="btn btn-primary">Historico</button>
@@ -102,5 +83,3 @@
         </div>
     </div>
 </div>
-
-<app-footer class="fixed-bottom"></app-footer>

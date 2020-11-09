@@ -25,6 +25,7 @@ export class SessionComponent implements OnInit {
   activeCards: Card[] = this.hooks;
   showSave = false;
   continue = false;
+  showAdd = true;
 
   defaultCard: Card = new Card();
 
@@ -80,6 +81,8 @@ export class SessionComponent implements OnInit {
         break;
       case 'Catalyst':
         this.relation.catalyst = event.card;
+        this.typeCard = 'Undefined';
+        this.showAdd = false;
         this.showSave = true;
     }
   }
@@ -91,6 +94,9 @@ export class SessionComponent implements OnInit {
   }
 
   nextIterationType(type: string) {
+    this.showAdd = true;
+    this.showSave = false;
+
     const prevHook = this.relation.hook;
     const prevRisk = this.relation.risc;
     this.relation = new RelationCards();
@@ -102,11 +108,19 @@ export class SessionComponent implements OnInit {
         this.activeCards = this.hooks;
         break;
       case 'Risk':
+        if (prevHook.name === 'default') {
+          this.showAdd = false;
+        }
+
         this.relation.hook = prevHook;
         this.typeCard = 'Risk';
         this.activeCards = this.risks;
         break;
       case 'Catalyst':
+        if (prevHook.name === 'default' || !prevRisk) {
+          this.showAdd = false;
+        }
+
         this.relation.hook = prevHook;
         this.relation.risc = prevRisk;
         this.typeCard = 'Catalyst';
