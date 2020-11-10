@@ -34,8 +34,14 @@ export class StorageService {
   }
 
   getRelationsHistory() {
-    this.relationsHistory = JSON.parse(localStorage.getItem('historyRelations'));
-    return this.relationsHistory;
+    const relationHistory = JSON.parse(localStorage.getItem('historyRelations'));
+
+    if (relationHistory) {
+      this.relationsHistory = relationHistory;
+      return this.relationsHistory;
+    } else {
+      return this.relationsHistory;
+    }
   }
 
   saveRelation( relation: RelationCards ) {
