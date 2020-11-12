@@ -31,9 +31,17 @@ export class SlideshowComponent implements OnInit {
       loop: true,
       effect: 'coverflow',
       grabCursor: true,
-      slidesPerView: 1.6,
+      slidesPerView: 1,
       spaceBetween: 300,
       breakpoints: {
+        // col-md
+        1200: {
+          slidesPerView: 1.3
+        },
+        // col-lg
+        1700: {
+          slidesPerView: 1.6
+        },
         // col-xl
         2300: {
           slidesPerView: 2,
