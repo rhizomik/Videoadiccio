@@ -91,6 +91,7 @@ export class SessionComponent implements OnInit {
     this.showSave = false;
     this.continue = true;
     this.storageService.saveRelation(this.relation);
+    this.storageService.updateSession();
   }
 
   nextIterationType(type: string) {
@@ -142,7 +143,9 @@ export class SessionComponent implements OnInit {
 
       dialogRef.afterClosed().subscribe(res => {
         if (res) {
-          this.storageService.resetRelationsHistory();
+          this.storageService.setFinish(true);
+          this.storageService.updateSession();
+
           this.router.navigate(['home']);
         }
       });

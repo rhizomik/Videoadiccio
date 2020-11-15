@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { StorageService } from './../../services/storage.service';
+import { SessionInfo } from 'src/app/models/sessionInfo.model';
 
 @Component({
   selector: 'app-home',
@@ -24,32 +25,23 @@ export class HomeComponent implements OnInit {
               private storageService: StorageService,
               private dialog: MatDialog) {
 
-    if (storageService.getRelationsHistory().length !== 0) {
-      this.openDialog();
-    }
-    this.initForm();
    }
 
   ngOnInit(): void {
+    this.initForm();
   }
 
-  openDialog(): void {
+  openDialog(config: MatDialogConfig): void {
 
-    const dialogRef = this.dialog.open(DialogBoxComponent, {
-      disableClose: true,
-      data: {
-        title: 'Sesion en progreso',
-        message: 'Anteriormente dejo una sesion sin finalizar. \n¿Quiere continuar con esta sesion o prefiere eliminarla?',
-        okButton: 'Continuar',
-        noOkButton: 'Eliminar'
-      }
-    });
+    const dialogRef = this.dialog.open(DialogBoxComponent, config);
 
     dialogRef.afterClosed().subscribe(res => {
       if (res) {
+        const sessionInfo = this.storageService.getSessionByUserGame(
+          this.fields.usuario.value, this.fields.juego.value);
+        this.storageService.setSessionInfo(sessionInfo);
+
         this.router.navigate(['session']);
-      } else {
-        this.storageService.resetRelationsHistory();
       }
     });
 
@@ -70,10 +62,41 @@ export class HomeComponent implements OnInit {
     this.submitted = true;
 
     if (this.form.valid) {
+
+      this.storageService.setSessionInfo(new SessionInfo());
       this.storageService.setUser(this.fields.usuario.value);
       this.storageService.setGame(this.fields.juego.value);
 
-      this.router.navigate(['session']);
+      const key = this.storageService.createSession();
+
+      let dialogConfig;
+
+      if (key !== 'OK') {
+        if (key === 'Pending') {
+          dialogConfig = {
+            disableClose: true,
+            data: {
+              title: 'Sesion duplicada',
+              message: 'Ya existe una sesión sin finalizar con el usuario y el juego indicado. \n¿Quiere continuar con la sesion pendiente? ',
+              okButton: 'Aceptar',
+              noOkButton: 'Cancelar'
+            }
+          };
+        } else {
+          dialogConfig = {
+            disableClose: true,
+            data: {
+              title: 'Sesion duplicada',
+              message: 'Ya existe una sessión finalizada con el usuario y el juego indicado. \nPara mas información, dirigase a la seccion de Sesiones.',
+              noOkButton: 'Cerrar'
+            }
+          };
+        }
+
+        this.openDialog(dialogConfig);
+      } else {
+        this.router.navigate(['session']);
+      }
     }
   }
 }

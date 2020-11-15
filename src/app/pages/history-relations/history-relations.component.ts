@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 import { RelationCards } from './../../models/relationCards.model';
@@ -15,7 +16,8 @@ export class HistoryRelationsComponent implements OnInit {
 
   history: RelationCards[];
 
-  constructor(private storageService: StorageService) { }
+  constructor(private storageService: StorageService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.user = this.storageService.getUser();
@@ -24,4 +26,11 @@ export class HistoryRelationsComponent implements OnInit {
     this.history = this.storageService.getRelationsHistory();
   }
 
+  goBack() {
+    if (this.storageService.getFinish()) {
+      this.router.navigate(['history-sessions']);
+    } else {
+      this.router.navigate(['session']);
+    }
+  }
 }

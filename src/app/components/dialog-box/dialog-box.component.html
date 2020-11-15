@@ -4,8 +4,11 @@
 
     <div class="row text-center pt-4">
         <div class="col-12">
-            <button class="btn btn-primary" [mat-dialog-close]="true">{{data.okButton}}</button>
+            <button class="btn btn-primary"
+                    *ngIf="data.okButton"
+                    [mat-dialog-close]="true">{{data.okButton}}</button>
             <span class="pr-3"></span>
-            <button class="btn btn-primary" [mat-dialog-close]="false">{{data.noOkButton}}</button>
+            <button class="btn btn-primary"
+                    [mat-dialog-close]="false">{{data.noOkButton}}</button>
         </div>
     </div>

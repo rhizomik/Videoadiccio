@@ -1,0 +1,64 @@
+
+<app-navbar [message]="title" [isTitle]="true"></app-navbar>
+
+<div class="container-fluid pt-5 text-center">
+    <div class="row">
+        <div class="col-6">
+            <h2>En progreso</h2>
+            <hr>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Juego</th>
+                        <th scope="col">Nº de relaciones</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let session of pendingSessions">
+                        <td>{{session.user}}</td>
+                        <td>{{session.game}}</td>
+                        <td>{{session.historyRelations.length}}</td>
+                        <td>
+                            <button class="btn-sm btn-primary py-0"
+                                    (click)="resumeSession(session)">Reanudar</button>
+                        </td>
+                        <td>
+                            <button class="btn-sm btn-primary py-0"
+                                    (click)="deleteSession(session, true)">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <h2>Finalizadas</h2>
+            <hr>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Juego</th>
+                        <th scope="col">Relaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let session of finishSessions">
+                        <td>{{session.user}}</td>
+                        <td>{{session.game}}</td>
+                        <td>{{session.historyRelations.length}}</td>
+                        <td>
+                            <button class="btn-sm btn-primary py-0"
+                                    (click)="viewHistory(session)">Historico</button>
+                        </td>
+                        <td>
+                            <button class="btn-sm btn-primary py-0"
+                                    (click)="deleteSession(session, false)">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -16,6 +16,7 @@ import { SlideshowComponent } from './components/slideshow/slideshow.component';
 import { HistoricalSessionComponent } from './components/historical-session/historical-session.component';
 import { HistoryRelationsComponent } from './pages/history-relations/history-relations.component';
 import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
+import { HistorySessionsComponent } from './pages/history-sessions/history-sessions.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { DialogBoxComponent } from './components/dialog-box/dialog-box.component
     SlideshowComponent,
     HistoricalSessionComponent,
     HistoryRelationsComponent,
-    DialogBoxComponent
+    DialogBoxComponent,
+    HistorySessionsComponent
   ],
   imports: [
     BrowserModule,
