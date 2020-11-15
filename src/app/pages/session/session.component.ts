@@ -40,6 +40,10 @@ export class SessionComponent implements OnInit {
     this.user = this.storageService.getUser();
     this.game = this.storageService.getGame();
 
+    if (!this.user || !this.game) {
+      this.router.navigate(['home']);
+    }
+
     this.cardsService.getAllCards().subscribe(data => {
       this.setCardsByType(data);
     });

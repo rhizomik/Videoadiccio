@@ -2,6 +2,8 @@ import { Router } from '@angular/router';
 import { SessionInfo } from './../../models/sessionInfo.model';
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from './../../services/storage.service';
+import { DialogBoxComponent } from 'src/app/components/dialog-box/dialog-box.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-history-sessions',
@@ -15,7 +17,8 @@ export class HistorySessionsComponent implements OnInit {
   finishSessions: SessionInfo[];
 
   constructor(private storageService: StorageService,
-              private router: Router) { }
+              private router: Router,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.pendingSessions = this.storageService.getPendingSessions();
@@ -32,7 +35,26 @@ export class HistorySessionsComponent implements OnInit {
     this.router.navigate(['session/history']);
   }
 
+  deleteDialog(sessionInfo: SessionInfo, flag: boolean): void {
+      const dialogRef = this.dialog.open(DialogBoxComponent, {
+      disableClose: true,
+      data: {
+        title: 'Borrar sesión',
+        message: '¿Esta seguro que quiere borrar la sesión?',
+        okButton: 'Aceptar',
+        noOkButton: 'Cancelar'
+      }
+      });
+
+      dialogRef.afterClosed().subscribe(res => {
+        if (res) {
+          this.deleteSession(sessionInfo, flag);
+        }
+      });
+  }
+
   deleteSession(sessionInfo: SessionInfo, flag: boolean): void {
+
     this.storageService.deleteSession(sessionInfo.key);
 
     if (flag) {
@@ -44,4 +66,5 @@ export class HistorySessionsComponent implements OnInit {
     }
 
   }
+
 }
