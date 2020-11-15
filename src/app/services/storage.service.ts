@@ -12,7 +12,13 @@ export class StorageService {
   constructor() { }
 
   createSession(): string {
-    const key = `${this.sessionInfo.user} - ${this.sessionInfo.game}`;
+    //For ignore multiples spaces and lower o upeer letters
+    const user2 = this.sessionInfo.user.replace(/\s/g, '');
+    const game2 = this.sessionInfo.game.replace(/\s/g, '');
+    const user3 = user2.toLowerCase();
+    const game3 = game2.toLowerCase();
+
+    const key = `${user3}-${game3}`;
     const item = localStorage.getItem(key);
 
     if (item) {
@@ -74,7 +80,14 @@ export class StorageService {
   }
 
   getSessionByUserGame(user: string, game: string): SessionInfo {
-    const key = `${user} - ${game}`;
+    // For ignore multiples spaces and lower o upeer letters
+    const user2 = this.sessionInfo.user.replace(/\s/g, '');
+    const game2 = this.sessionInfo.game.replace(/\s/g, '');
+    const user3 = user2.toLowerCase();
+    const game3 = game2.toLowerCase();
+
+
+    const key = `${user3}-${game3}`;
     return JSON.parse(localStorage.getItem(key));
   }
 
