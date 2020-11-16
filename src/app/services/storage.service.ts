@@ -18,7 +18,7 @@ export class StorageService {
     const user3 = user2.toLowerCase();
     const game3 = game2.toLowerCase();
 
-    const key = `${user3}-${game3}`;
+    const key = `videoadiccio_${user3}-${game3}`;
     const item = localStorage.getItem(key);
 
     if (item) {
@@ -44,10 +44,11 @@ export class StorageService {
     const sessions: Array<SessionInfo> = [];
 
     keys.forEach(key => {
-      const session = JSON.parse(localStorage.getItem(key));
-      sessions.push(session);
+      if (key.startsWith('videoadiccio_')) {
+        const session = JSON.parse(localStorage.getItem(key));
+        sessions.push(session);
+      }
     });
-
     return sessions;
   }
 
@@ -56,12 +57,13 @@ export class StorageService {
     const sessions: Array<SessionInfo> = [];
 
     keys.forEach(key => {
-      const session = JSON.parse(localStorage.getItem(key));
-      if (!session.finish) {
-        sessions.push(session);
+      if (key.startsWith('videoadiccio_')) {
+        const session = JSON.parse(localStorage.getItem(key));
+        if (!session.finish) {
+          sessions.push(session);
+        }
       }
     });
-
     return sessions;
   }
 
@@ -70,12 +72,13 @@ export class StorageService {
     const sessions: Array<SessionInfo> = [];
 
     keys.forEach(key => {
-      const session = JSON.parse(localStorage.getItem(key));
-      if (session.finish) {
-        sessions.push(session);
+      if (key.startsWith('videoadiccio_')) {
+        const session = JSON.parse(localStorage.getItem(key));
+        if (session.finish) {
+          sessions.push(session);
+        }
       }
     });
-
     return sessions;
   }
 
@@ -87,7 +90,7 @@ export class StorageService {
     const game3 = game2.toLowerCase();
 
 
-    const key = `${user3}-${game3}`;
+    const key = `videoadiccio_${user3}-${game3}`;
     return JSON.parse(localStorage.getItem(key));
   }
 
