@@ -27,7 +27,9 @@ export class SessionComponent implements OnInit {
   continue = false;
   showAdd = true;
 
-  defaultCard: Card = new Card();
+  defaultCardHook: Card = new Card();
+  defaultCardRisk: Card = new Card();
+  defaultCardCatalyst: Card = new Card();
 
   relation: RelationCards;
 
@@ -49,11 +51,8 @@ export class SessionComponent implements OnInit {
     });
 
     this.relation = new RelationCards();
+    this.createDefaultCards();
 
-    this.defaultCard.name = 'default';
-    this.defaultCard.content = 'assets/img/plantilla.png';
-    this.defaultCard.type = 'Hook';
-    this.relation.hook = this.defaultCard;
   }
 
   private setCardsByType(data: Card[]) {
@@ -69,6 +68,23 @@ export class SessionComponent implements OnInit {
           this.catalysts.push(card);
       }
     });
+  }
+
+  private createDefaultCards(): void {
+    this.defaultCardHook.name = 'default';
+    this.defaultCardHook.content = 'assets/img/plantilla.png';
+    this.defaultCardHook.type = 'Hook';
+    this.relation.hook = this.defaultCardHook;
+
+    this.defaultCardRisk.name = 'default';
+    this.defaultCardRisk.content = 'assets/img/plantilla.png';
+    this.defaultCardRisk.type = 'Risk';
+    this.relation.risc = this.defaultCardRisk;
+
+    this.defaultCardCatalyst.name = 'default';
+    this.defaultCardCatalyst.content = 'assets/img/plantilla.png';
+    this.defaultCardCatalyst.type = 'Catalyst';
+    this.relation.catalyst = this.defaultCardCatalyst;
   }
 
   getCardSelected(event): void {
@@ -108,7 +124,10 @@ export class SessionComponent implements OnInit {
 
     switch (type) {
       case 'Hook':
-        this.relation.hook = this.defaultCard;
+        this.relation.hook = this.defaultCardHook;
+        this.relation.risc = this.defaultCardRisk;
+        this.relation.catalyst = this.defaultCardCatalyst;
+
         this.typeCard = 'Hook';
         this.activeCards = this.hooks;
         break;
@@ -118,16 +137,21 @@ export class SessionComponent implements OnInit {
         }
 
         this.relation.hook = prevHook;
+        this.relation.risc = this.defaultCardRisk;
+        this.relation.catalyst = this.defaultCardCatalyst;
+
         this.typeCard = 'Risk';
         this.activeCards = this.risks;
         break;
       case 'Catalyst':
-        if (prevHook.name === 'default' || !prevRisk) {
+        if (prevHook.name === 'default' || prevRisk.name === 'default') {
           this.showAdd = false;
         }
 
         this.relation.hook = prevHook;
         this.relation.risc = prevRisk;
+        this.relation.catalyst = this.defaultCardCatalyst;
+        
         this.typeCard = 'Catalyst';
         this.activeCards = this.catalysts;
     }

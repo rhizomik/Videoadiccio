@@ -22,8 +22,10 @@
     </div>
 
     <div class="container" *ngFor="let relation of history">
-        <div class="pt-4"></div>
-        <app-historical-session [active]="relation"  [disabledCards]="false"></app-historical-session>
+        <div class="pt-1"></div>
+        <app-historical-session [active]="relation"
+                                [disabledCards]="false"
+                                [showTitleType]="false"></app-historical-session>
         <hr>
     </div>
 

@@ -1,78 +1,69 @@
 
 <app-navbar [isTitle]="false" [user]="user" [game]="game"></app-navbar>
 
-<div class="container-fluid pt-4">
-    <div class="row">
-        <div class="col-2"></div>
-        <div class="col-2 text-center">
-            <div [ngStyle]="{'opacity': typeCard !== 'Hook' ? '0.3' : '1'}"
-                 class="type-card-hook"
-                 (click)="nextIterationType('Hook')">
-                <h2>Hooks</h2>
+    <div class="container-fluid pt-4">
+        <div class="container-fluid shadow-lg bg-light rounded pt-4 pb-3">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-2 text-center">
+                    <div [ngStyle]="{'opacity': typeCard !== 'Hook' ? '0.3' : '1'}"
+                         class="type-card-hook shadow-lg"
+                         (click)="nextIterationType('Hook')">
+                        <span class="font-weight-bold" style="font-size: xx-large;">Hooks</span>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-2 text-center">
+                    <div [ngStyle]="{'opacity': typeCard !== 'Risk' ? '0.3' : '1'}"
+                         class="type-card-risk shadow-lg"
+                         (click)="nextIterationType('Risk')">
+                        <span class="font-weight-bold" style="font-size: xx-large;">Risks</span>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-2 text-center">
+                    <div [ngStyle]="{'opacity': typeCard !== 'Catalyst' ? '0.3' : '1'}"
+                         class="type-card-catalyts shadow-lg"
+                         (click)="nextIterationType('Catalyst')">
+                        <span class="font-weight-bold" style="font-size: xx-large;">Catalysts</span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-1"></div>
-        <div class="col-2 text-center">
-            <div [ngStyle]="{'opacity': typeCard !== 'Risk' ? '0.3' : '1'}"
-                 class="type-card-risk"
-                 (click)="nextIterationType('Risk')">
-                <h2>Risks</h2>
-            </div>
-        </div>
-        <div class="col-1"></div>
-        <div class="col-2 text-center">
-            <div [ngStyle]="{'opacity': typeCard !== 'Catalyst' ? '0.3' : '1'}"
-                 class="type-card-catalyts"
-                 (click)="nextIterationType('Catalyst')">
-                <h2>Catalysts</h2>
+
+            <div class="row pt-2">
+                <div class="col-12">
+                    <app-slideshow [cards]="activeCards"
+                                   (selectedCard)="getCardSelected($event)"
+                                   [showAdd]="showAdd"
+                                   [ngStyle]="{'visibility': continue ? 'hidden' : 'visible'}" ></app-slideshow>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="row pt-4">
-        <div class="col-12">
-            <app-slideshow [cards]="activeCards"
-                           (selectedCard)="getCardSelected($event)"
-                           [showAdd]="showAdd"
-                           [ngStyle]="{'visibility': continue ? 'hidden' : 'visible'}" ></app-slideshow>
-        </div>
-    </div>
-</div>
+<div class="container pt-lg-4">
+    <div class="container shadow-lg bg-light rounded pt-4 pb-2 center-progress">
+        <div class="row">
+            <div class="col-11">
+                <h4 class="text-center">Progreso</h4>
+                <hr>
 
-<div class="container pt-5 center-progress">
-    <div class="row">
-        <div class="col-11">
-            <h4 class="text-center">Progreso</h4>
-            <hr>
-            <div class="row text-center">
-                <div class="col-4">
-                    <h6>Hooks</h6>
-                    <hr>
-                </div>
-                <div class="col-4">
-                    <h6>Risks</h6>
-                    <hr>
-                </div>
-                <div class="col-4">
-                    <h6>Catalysts</h6>
-                    <hr>
-                </div>
+                <app-historical-session
+                    [active]="relation"
+                    [disabledCards]="continue"
+                    [showTitleType]="true"></app-historical-session>
+
             </div>
-
-            <app-historical-session
-                [active]="relation"
-                [disabledCards]="continue"></app-historical-session>
-
-        </div>
-        <div class="col-1 pt-4">
-            <div *ngIf="showSave" class="saveButton">
-                <button (click)="selectNextType()" class="btn btn-primary">Guardar</button>
+            <div class="col-1 pt-4">
+                <div *ngIf="showSave" class="saveButton">
+                    <button (click)="selectNextType()" class="btn btn-primary">Guardar</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container-fluid pt-lg-4 pt-xl-5 pb-md-5">
+<div class="container-fluid pt-lg-3 pt-xl-4 pb-md-5">
     <div class="row">
         <div class="col-6 text-right">
             <button [routerLink]="['history']"
@@ -82,4 +73,7 @@
             <button class="btn btn-primary" (click)="finishDialog()">Finalizar</button>
         </div>
     </div>
+</div>
+<div class="bg-light">
+
 </div>

@@ -32,7 +32,7 @@ export class SlideshowComponent implements OnInit {
       effect: 'coverflow',
       grabCursor: true,
       slidesPerView: 1,
-      spaceBetween: 300,
+      spaceBetween: 240,
       breakpoints: {
         // col-md
         1200: {

@@ -14,6 +14,9 @@ export class HistoricalSessionComponent implements OnInit {
   @Input()
   disabledCards: boolean;
 
+  @Input()
+  showTitleType: boolean;
+
   constructor() { }
 
   ngOnInit(): void {
