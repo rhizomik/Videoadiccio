@@ -22,6 +22,7 @@ export class SessionComponent implements OnInit {
   catalysts: Card[] = [];
 
   typeCard = 'Hook';
+  showAllTypes = false;
   activeCards: Card[] = this.hooks;
   showSave = false;
   continue = false;
@@ -110,6 +111,7 @@ export class SessionComponent implements OnInit {
   selectNextType() {
     this.showSave = false;
     this.continue = true;
+    this.showAllTypes = true;
     this.storageService.saveRelation(this.relation);
     this.storageService.updateSession();
   }
@@ -117,6 +119,7 @@ export class SessionComponent implements OnInit {
   nextIterationType(type: string) {
     this.showAdd = true;
     this.showSave = false;
+    this.showAllTypes = false;
 
     const prevHook = this.relation.hook;
     const prevRisk = this.relation.risc;
@@ -151,7 +154,7 @@ export class SessionComponent implements OnInit {
         this.relation.hook = prevHook;
         this.relation.risc = prevRisk;
         this.relation.catalyst = this.defaultCardCatalyst;
-        
+
         this.typeCard = 'Catalyst';
         this.activeCards = this.catalysts;
     }

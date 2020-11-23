@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col-2 text-center">
-                    <div [ngStyle]="{'opacity': typeCard !== 'Hook' ? '0.3' : '1'}"
+                    <div [ngStyle]="{'opacity': (typeCard === 'Hook' || showAllTypes) ? '1' : '0.3'}"
                          class="type-card-hook shadow-lg"
                          (click)="nextIterationType('Hook')">
                         <span class="font-weight-bold" style="font-size: xx-large;">Hooks</span>
@@ -14,7 +14,7 @@
                 </div>
                 <div class="col-1"></div>
                 <div class="col-2 text-center">
-                    <div [ngStyle]="{'opacity': typeCard !== 'Risk' ? '0.3' : '1'}"
+                    <div [ngStyle]="{'opacity': (typeCard === 'Risk' || showAllTypes) ? '1' : '0.3'}"
                          class="type-card-risk shadow-lg"
                          (click)="nextIterationType('Risk')">
                         <span class="font-weight-bold" style="font-size: xx-large;">Risks</span>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-1"></div>
                 <div class="col-2 text-center">
-                    <div [ngStyle]="{'opacity': typeCard !== 'Catalyst' ? '0.3' : '1'}"
+                    <div [ngStyle]="{'opacity': (typeCard === 'Catalyst' || showAllTypes) ? '1' : '0.3'}"
                          class="type-card-catalyts shadow-lg"
                          (click)="nextIterationType('Catalyst')">
                         <span class="font-weight-bold" style="font-size: xx-large;">Catalysts</span>
