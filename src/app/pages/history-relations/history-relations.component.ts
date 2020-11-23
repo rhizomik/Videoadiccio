@@ -30,6 +30,14 @@ export class HistoryRelationsComponent implements OnInit {
     this.history = this.storageService.getRelationsHistory();
   }
 
+  deleteRelation(relation: RelationCards): void {
+    const index = this.history.indexOf(relation);
+    this.history.splice(index, 1);
+
+    this.storageService.setRelationHistory(this.history);
+    this.storageService.updateSession();
+  }
+
   goBack() {
     if (this.storageService.getFinish()) {
       this.router.navigate(['history-sessions']);

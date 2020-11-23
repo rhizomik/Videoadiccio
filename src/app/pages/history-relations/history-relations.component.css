@@ -1,3 +1,7 @@
-.container {
-    min-width: 80%;
+.container-fluid {
+    max-width: 89%;
+}
+
+.keep-space{
+    min-height: 100%;
 }

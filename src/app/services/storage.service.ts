@@ -119,6 +119,10 @@ export class StorageService {
     return this.sessionInfo.historyRelations;
   }
 
+  setRelationHistory(historyRelations: RelationCards[]): void {
+    this.sessionInfo.historyRelations = historyRelations;
+  }
+
   saveRelation(relation: RelationCards): void {
     this.sessionInfo.historyRelations.push(relation);
   }
