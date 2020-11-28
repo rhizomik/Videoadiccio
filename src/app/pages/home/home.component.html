@@ -1,52 +1,95 @@
 
 <app-navbar [message]="title" [isTitle]="true"></app-navbar>
 
-<div class="row no-gutters justify-content-center h-100">
-    <div class="col-12 col-lg-6 align-self-center">
-        <img src="assets/img/portada.jpg" class="img-fluid">
-    </div>
-    <div class="col-12 col-lg-4 align-self-center">
-        <form [formGroup]="form" (ngSubmit)="newSession()">
-            <h2 class="text-center">¿Por donde empiezo?</h2>
+<div class="container-fluid">
+    <div class="row no-gutters pl-5">
+        <div class="col-6 padding-custom-img">
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="assets/img/portada.jpg" class="img-fluid size-img">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/img/portada2.jpg" class="img-fluid size-img">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/img/portada3.jpg" class="img-fluid size-img">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/img/portada4.jpg" class="img-fluid size-img">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/img/portada5.jpg" class="img-fluid size-img">
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <div class="col-6 pl-2 padding-custom-text">
             <div class="row pt-3 text-center">
-                <div class="col-6">
-                    <input class="form-control"
-                    type="text"
-                    placeholder="Introduce un nombre de usuario"
-                    formControlName="usuario"
-                    [class.is-invalid]="submitted && fields.usuario.errors">
+                <div class="col-1"></div>
+                <div class="col-11 shadow-lg bg-light rounded">
+                    <form [formGroup]="form" (ngSubmit)="newSession()" class="m-5">
+                        <h2>Empezar una nueva sesión</h2>
+                        <hr>
+
+                        <div class="row pt-2">
+                            <div class="col-3"></div>
+                            <div class="col-6">
+                                <input class="form-control"
+                                type="text"
+                                placeholder="Introduce un nombre de usuario"
+                                formControlName="usuario"
+                                [class.is-invalid]="submitted && fields.usuario.errors">
+                            </div>
+                        </div>
+                        <small *ngIf="submitted && fields.usuario.errors"
+                                class="pl-2 text-danger">Este campo es obligatorio</small>
+
+                        <div class="row pt-2">
+                            <div class="col-3"></div>
+                            <div class="col-6">
+                                <input class="form-control"
+                                type="text"
+                                placeholder="Introduce el nombre de un juego"
+                                formControlName="juego"
+                                [class.is-invalid]="submitted && fields.juego.errors">
+                            </div>
+                        </div>
+                        <small *ngIf="submitted && fields.juego.errors"
+                                class="pl-2 text-danger">Este campo es obligatorio</small>
+
+                        <div class="row pt-3">
+                            <div class="col-3"></div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <button type="submit"
+                                            class="btn btn-primary btn-block">Nueva sesión</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <small *ngIf="submitted && fields.usuario.errors"
-                    class="pl-2 text-danger">Este campo es obligatorio</small>
-
-            <div class="row pt-2">
-                <div class="col-6">
-                    <input class="form-control"
-                    type="text"
-                    placeholder="Introduce el nombre del juego"
-                    formControlName="juego"
-                    [class.is-invalid]="submitted && fields.juego.errors">
-                </div>
-            </div>
-            <small *ngIf="submitted && fields.juego.errors"
-                    class="pl-2 text-danger">Este campo es obligatorio</small>
-
-            <div class="row pt-3">
-                <div class="col-6">
-                    <div class="input-group">
-                        <button type="submit"
-                                class="btn btn-outline-primary btn-block">Nueva sesión</button>
+            <div class="row pt-4 pb-4">
+                <div class="col-1"></div>
+                <div class="col-11 shadow bg-light rounded">
+                    <div class="m-5">
+                        <h2 class="text-center">Adicción a los videojuegos</h2>
+                        <hr>
+                        <p>
+                            Según el Instituto Superior de Estudios Psicológicos cada vez son más los niños y jóvenes que juegan a videojuegos y que, como consecuencia de su uso incorrecto, acaban convirtiéndose en adictos a ellos.
+                        </p>
+                        <p>
+                            Tanto es así, que en 2018, debido a esta creciente problemática, la Organización Mundial de la Salud (OMS), catalogó la adicción a los videojuegos como un desorden de salud mental, incluyéndolo dentro del apartado relacionado con los desórdenes adictivos de la Clasificación Internacional de Enfermedades.
+                        </p>
+                        <p>
+                            Esta aplicación permite reflexionar sobre los mecanismos diseñados para engancharnos y ver qué riesgos se pueden correr, de forma que se puedan encontrar mecanismos para devolver el control.
+                        </p>
                     </div>
                 </div>
+                <div class="col-1"></div>
             </div>
-        </form>
-        <h2 class="pt-5">Descubre los factores asociados a la videoadicción</h2>
-        <p class="pt-3">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error impedit perspiciatis corrupti dignissimos voluptates facilis suscipit ullam esse repellendus, beatae a nemo explicabo veniam repellat est illo iusto. Esse error laudantium, a alias autem quod itaque voluptatum enim accusantium rem nemo dignissimos, similique adipisci modi dicta illo, tempore quasi facere?
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio voluptatem libero illum aliquam? Voluptatem consectetur blanditiis enim! Illum, magni dolor? Dicta exercitationem natus quidem aliquid fugiat. Quis repellendus hic recusandae neque. Quisquam nihil at iusto, repellendus asperiores numquam quaerat sunt fugit. Repudiandae fugit, dignissimos sequi itaque quis unde suscipit velit.
-        </p>
+        </div>
     </div>
 </div>
