@@ -75,6 +75,9 @@
                         </tr>
                     </tbody>
                 </table>
+                <div *ngIf="finishSessions.length !== 0" class="pt-2">
+                    <button class="btn btn-primary" (click)="exportSessions()">Exportar sesiones</button>
+                </div>
             </div>
         </div>
     </div>

@@ -1,3 +1,4 @@
+import { ExportService } from './../../services/export.service';
 import { Router } from '@angular/router';
 import { SessionInfo } from './../../models/sessionInfo.model';
 import { Component, OnInit } from '@angular/core';
@@ -18,7 +19,8 @@ export class HistorySessionsComponent implements OnInit {
 
   constructor(private storageService: StorageService,
               private router: Router,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private exportService: ExportService) { }
 
   ngOnInit(): void {
     this.pendingSessions = this.storageService.getPendingSessions();
@@ -65,6 +67,10 @@ export class HistorySessionsComponent implements OnInit {
       this.finishSessions.splice(index, 1);
     }
 
+  }
+
+  exportSessions(): void {
+    this.exportService.exportSessionsToExcel(this.finishSessions);
   }
 
 }
