@@ -19,7 +19,7 @@ export class ExportService {
     header.font = { size: 12 , bold: true, color: { argb: 'FFFFFFFF' } };
     header.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
 
-    header.eachCell((cell, number) => {
+    header.eachCell((cell) => {
       cell.fill = {
         type: 'pattern',
         pattern: 'solid',
