@@ -10,6 +10,25 @@ export class ExportService {
 
   constructor() { }
 
+  sendSessionByEmail(session: SessionInfo, email: string): boolean {
+
+    let body = `Usuario,Juego,Hook,Risk,Catalyst`;
+
+    session.historyRelations.forEach( relation => {
+      body += `%0D%0A${session.user},${session.game},${relation.hook.name},${relation.risc.name},${relation.catalyst.name}`;
+    });
+
+    const mailto = `mailto:${email}?subject=Videoadicció - Sesion ${session.user} - ${session.game}&body=${body}`;
+
+    if (mailto.length > 1750) {
+      return false;
+    } else {
+      window.open(mailto, '_blank');
+      return true;
+    }
+
+  }
+
   exportSessionsToExcel(sessions: SessionInfo[]): void {
     const workbook = new Workbook();
 
@@ -44,7 +63,8 @@ export class ExportService {
     workbook.xlsx.writeBuffer().then(
       data => {
         const blob = new Blob(
-          [data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+          [data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }
+        );
         fs.saveAs(blob, 'data-sessions.xlsx');
       }
     );

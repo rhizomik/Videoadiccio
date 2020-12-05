@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { StorageService } from './../../services/storage.service';
 import { DialogBoxComponent } from 'src/app/components/dialog-box/dialog-box.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogBoxEmailComponent } from 'src/app/components/dialog-box-email/dialog-box-email.component';
 
 @Component({
   selector: 'app-history-sessions',
@@ -67,6 +68,36 @@ export class HistorySessionsComponent implements OnInit {
       this.finishSessions.splice(index, 1);
     }
 
+  }
+
+  sendSession(session: SessionInfo) {
+
+    const dialogRef = this.dialog.open(DialogBoxEmailComponent, {
+    disableClose: true,
+    data: {
+      title: 'Enviar sesion por email',
+      okButton: 'Aceptar',
+      noOkButton: 'Cancelar',
+    }
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+      if (res.state) {
+        const sendState = this.exportService.sendSessionByEmail(session, res.email);
+
+        if (!sendState) {
+          const dialogRef2 = this.dialog.open(DialogBoxComponent, {
+            disableClose: true,
+            data: {
+              title: 'Limite excedido',
+              message: 'La sesion contiene demasiadas relaciones, \n no es posible enviarla por correo electronico.',
+              noOkButton: 'Cerrar',
+            }
+          });
+        }
+
+      }
+    });
   }
 
   exportSessions(): void {

@@ -17,6 +17,7 @@ import { HistoricalSessionComponent } from './components/historical-session/hist
 import { HistoryRelationsComponent } from './pages/history-relations/history-relations.component';
 import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
 import { HistorySessionsComponent } from './pages/history-sessions/history-sessions.component';
+import { DialogBoxEmailComponent } from './components/dialog-box-email/dialog-box-email.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HistorySessionsComponent } from './pages/history-sessions/history-sessi
     HistoricalSessionComponent,
     HistoryRelationsComponent,
     DialogBoxComponent,
-    HistorySessionsComponent
+    HistorySessionsComponent,
+    DialogBoxEmailComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { HistorySessionsComponent } from './pages/history-sessions/history-sessi
     BrowserAnimationsModule
   ],
   entryComponents: [
-    DialogBoxComponent
+    DialogBoxComponent,
+    DialogBoxEmailComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
