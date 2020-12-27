@@ -1,24 +1,146 @@
-import { RelationCards } from './../models/relationCards.model';
 import { Injectable } from '@angular/core';
+import { SessionInfo } from './../models/sessionInfo.model';
+import { RelationCards } from './../models/relationCards.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
 
-  relationsHistory: RelationCards[] = [];
+  private sessionInfo: SessionInfo = new SessionInfo();
 
   constructor() { }
 
-  getRelationsHistory() {
-    return this.relationsHistory;
+  createSession(): string {
+    //For ignore multiples spaces and lower o upeer letters
+    const user2 = this.sessionInfo.user.replace(/\s/g, '');
+    const game2 = this.sessionInfo.game.replace(/\s/g, '');
+    const user3 = user2.toLowerCase();
+    const game3 = game2.toLowerCase();
+
+    const key = `videoadiccio_${user3}-${game3}`;
+    const item = localStorage.getItem(key);
+
+    if (item) {
+      const session = JSON.parse(item);
+      if (session.finish) {
+        return 'Finish';
+      } else {
+        return 'Pending';
+      }
+    } else {
+      this.sessionInfo.key = key;
+      localStorage.setItem(this.sessionInfo.key, JSON.stringify(this.sessionInfo));
+      return 'OK';
+    }
   }
 
-  saveRelation( relation: RelationCards ) {
-    this.relationsHistory.push(relation);
+  updateSession(): void {
+    localStorage.setItem(this.sessionInfo.key, JSON.stringify(this.sessionInfo));
   }
 
-  resetRelationsHistory() {
-    this.relationsHistory = [];
+  getAllSessions(): SessionInfo[] {
+    const keys = Object.keys(localStorage);
+    const sessions: Array<SessionInfo> = [];
+
+    keys.forEach(key => {
+      if (key.startsWith('videoadiccio_')) {
+        const session = JSON.parse(localStorage.getItem(key));
+        sessions.push(session);
+      }
+    });
+    return sessions;
   }
+
+  getPendingSessions(): SessionInfo[] {
+    const keys = Object.keys(localStorage);
+    const sessions: Array<SessionInfo> = [];
+
+    keys.forEach(key => {
+      if (key.startsWith('videoadiccio_')) {
+        const session = JSON.parse(localStorage.getItem(key));
+        if (!session.finish) {
+          sessions.push(session);
+        }
+      }
+    });
+    return sessions;
+  }
+
+  getFinishSessions(): SessionInfo[] {
+    const keys = Object.keys(localStorage);
+    const sessions: Array<SessionInfo> = [];
+
+    keys.forEach(key => {
+      if (key.startsWith('videoadiccio_')) {
+        const session = JSON.parse(localStorage.getItem(key));
+        if (session.finish) {
+          sessions.push(session);
+        }
+      }
+    });
+    return sessions;
+  }
+
+  getSessionByUserGame(user: string, game: string): SessionInfo {
+    // For ignore multiples spaces and lower o upeer letters
+    const user2 = this.sessionInfo.user.replace(/\s/g, '');
+    const game2 = this.sessionInfo.game.replace(/\s/g, '');
+    const user3 = user2.toLowerCase();
+    const game3 = game2.toLowerCase();
+
+
+    const key = `videoadiccio_${user3}-${game3}`;
+    return JSON.parse(localStorage.getItem(key));
+  }
+
+  deleteSession(key: string): void {
+    this.sessionInfo = new SessionInfo();
+    localStorage.removeItem(key);
+  }
+
+  getUser(): string {
+    return this.sessionInfo.user;
+  }
+
+  setUser(user: string): void {
+    this.sessionInfo.user = user;
+  }
+
+  getGame(): string {
+    return this.sessionInfo.game;
+  }
+
+  setGame(game: string): void {
+    this.sessionInfo.game = game;
+  }
+
+  getRelationsHistory(): RelationCards[] {
+    return this.sessionInfo.historyRelations;
+  }
+
+  setRelationHistory(historyRelations: RelationCards[]): void {
+    this.sessionInfo.historyRelations = historyRelations;
+  }
+
+  saveRelation(relation: RelationCards): void {
+    this.sessionInfo.historyRelations.push(relation);
+  }
+
+  getFinish(): boolean {
+    return this.sessionInfo.finish;
+  }
+
+  setFinish(finish: boolean): void {
+    this.sessionInfo.finish = finish;
+  }
+
+  getSessionInfo(): SessionInfo {
+    return this.sessionInfo;
+  }
+
+  setSessionInfo(value: SessionInfo) {
+    this.sessionInfo = value;
+  }
+
 }

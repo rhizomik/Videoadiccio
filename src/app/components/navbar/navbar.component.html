@@ -1,16 +1,25 @@
-<nav class="navbar navbar-expand-xl navbar-dark color-primary">
-    
-    <a class="navbar-brand pl-5" routerLink="/pass">Concienciamiento de los factores implicados en la videodicción</a>
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <div *ngIf="isTitle" class="navbar-brand pl-5">
+    {{message}}
+  </div>
 
-    <div class="collapse navbar-collapse text-center" id="navbarNavAltMarkup">
-      <div class="navbar-nav ml-auto mr-5">
-        <a class="nav-item nav-link mx-3" href="#">Estadisticas</a>
-        <a class="nav-item nav-link mx-3" href="#">Configuración</a>
-        <a class="nav-item nav-link mx-3" href="#">Ayuda</a>
-      </div>
+  <div *ngIf="!isTitle" class="navbar-brand" style="padding-left: 150px;">
+    <span class="font-weight-bold">Usuario: </span>
+    <span class="pl-2">{{user}}</span>
+    <span style="padding-left: 100px;"></span>
+    <span class="font-weight-bold">Juego: </span>
+    <span class="pl-2">{{game}}</span>
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse text-center" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto mr-5">
+      <a class="nav-item nav-link mx-4" routerLink="/home" routerLinkActive="active">Inicio</a>
+      <a class="nav-item nav-link mx-4" routerLink="/history-sessions" routerLinkActive="active">Sesiones</a>
     </div>
-  </nav>
+  </div>
+</nav>

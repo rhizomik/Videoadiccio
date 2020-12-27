@@ -1,0 +1,29 @@
+<div style="width: 280px;">
+    <h2 mat-dialog-title class="text-center"><b>{{data.title}}</b></h2>
+
+    <mat-dialog-content class="text-center">
+        <form [formGroup]="form" (ngSubmit)="send()">
+            <div class="row">
+                <div class="col-12">
+                    <input class="form-control"
+                    type="email"
+                    placeholder="Introduce un email de destino"
+                    formControlName="email"
+                    [class.is-invalid]="submitted && fields.email.errors">
+                    <small *ngIf="submitted && fields.email.errors"
+                            class="pl-2 text-danger">El email no es correcto</small>
+                </div>
+            </div>
+            <div class="row text-center pt-4">
+                <div class="col-12">
+                    <button class="btn btn-primary"
+                            type="submit"
+                            *ngIf="data.okButton">{{data.okButton}}</button>
+                    <span class="pr-3"></span>
+                    <button class="btn btn-primary"
+                            [mat-dialog-close]="false">{{data.noOkButton}}</button>
+                </div>
+            </div>
+        </form>
+    </mat-dialog-content>
+</div>

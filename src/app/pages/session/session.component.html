@@ -1,107 +1,79 @@
 
-<div *ngIf="!continue" class="container-fluid pt-4">
+<app-navbar [isTitle]="false" [user]="user" [game]="game"></app-navbar>
+
+    <div class="container-fluid pt-4">
+        <div class="container-fluid shadow-lg bg-light rounded pt-4 pb-3">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-2 text-center">
+                    <div [ngStyle]="{'opacity': (typeCard === 'Hook' || showAllTypes) ? '1' : '0.3'}"
+                         class="type-card-hook shadow-lg"
+                         (click)="nextIterationType('Hook')">
+                        <span class="font-weight-bold" style="font-size: xx-large;">Hooks</span>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-2 text-center">
+                    <div [ngStyle]="{'opacity': (typeCard === 'Risk' || showAllTypes) ? '1' : '0.3'}"
+                         class="type-card-risk shadow-lg"
+                         (click)="nextIterationType('Risk')">
+                        <span class="font-weight-bold" style="font-size: xx-large;">Risks</span>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-2 text-center">
+                    <div [ngStyle]="{'opacity': (typeCard === 'Catalyst' || showAllTypes) ? '1' : '0.3'}"
+                         class="type-card-catalyts shadow-lg"
+                         (click)="nextIterationType('Catalyst')">
+                        <span class="font-weight-bold" style="font-size: xx-large;">Catalysts</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row pt-2">
+                <div class="col-12">
+                    <app-slideshow [cards]="activeCards"
+                                   (selectedCard)="getCardSelected($event)"
+                                   [showAdd]="showAdd"
+                                   [ngStyle]="{'visibility': continue ? 'hidden' : 'visible'}" ></app-slideshow>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="container pt-lg-4">
+    <div class="container shadow-lg bg-light rounded pt-4 pb-2 center-progress">
+        <div class="row">
+            <div class="col-11">
+                <h4 class="text-center">Progreso</h4>
+                <hr>
+
+                <app-historical-session
+                    [active]="relation"
+                    [disabledCards]="continue"
+                    [showTitleType]="true"></app-historical-session>
+
+            </div>
+            <div class="col-1 pt-4">
+                <div *ngIf="showSave" class="saveButton">
+                    <button (click)="selectNextType()" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid pt-lg-3 pt-xl-4 pb-md-5">
     <div class="row">
-        <div class="col-2"></div>
-        <div class="col-2 text-center">
-            <div *ngIf="typeCard === 'Hook'"
-                 class="type-card-hook">     
-                <h2>Hooks</h2>
-            </div>
-        </div>
-        <div class="col-1"></div>
-        <div class="col-2 text-center">
-            <div *ngIf="typeCard === 'Risk'"
-                 class="type-card-risk">     
-                <h2>Risks</h2>
-            </div>
-        </div>
-        <div class="col-1"></div>
-        <div class="col-2 text-center">
-            <div *ngIf="typeCard === 'Catalyst'"
-                 class="type-card-catalyts">     
-                <h2>Catalysts</h2>
-            </div>
-        </div>
-    </div>
-
-    <div class="row pt-4">
-        <div class="col-12">
-            <app-slideshow [cards]="activeCards" 
-                           (selectedCard)="getCardSelected($event)"></app-slideshow>
-        </div>
-    </div>
-</div>
-
-<div *ngIf="continue" class="container-fluid" style="padding-top: 100px;">
-    <h1 class="text-center">Continuar con: </h1>
-    <div class="row" style="padding-top: 100px;">
-        <div class="col-2"></div>
-        <div class="col-2 text-center">
-            <div (click)="nextIterationType('Hook')" class="type-card-hook">     
-                <h2>Hooks</h2>
-            </div>
-        </div>
-        <div class="col-1"></div>
-        <div class="col-2 text-center">
-            <div (click)="nextIterationType('Risk')" class="type-card-risk">     
-                <h2>Risks</h2>
-            </div>
-        </div>
-        <div class="col-1"></div>
-        <div class="col-2 text-center">
-            <div (click)="nextIterationType('Catalyst')" class="type-card-catalyts">     
-                <h2>Catalysts</h2>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container pt-5" style="padding-left: 140px;">
-    <div class="row">
-        <div class="col-11">
-            <h2 class="text-center">Progreso</h2>
-            <hr>
-            <div class="row text-center">
-                <div class="col-4">
-                    <h5>Hooks</h5>
-                    <hr>
-                </div>
-                <div class="col-4">
-                    <h5>Risks</h5>
-                    <hr>
-                </div>
-                <div class="col-4">
-                    <h5>Catalysts</h5>
-                    <hr>
-                </div>
-            </div>
-
-            <app-historical-session
-                [active]="relation" 
-                [disabledCards]="continue"></app-historical-session> 
-
-        </div>
-        <div class="col-1">
-            <div *ngIf="showSave" class="saveButton">
-                <button (click)="selectNextType()" class="btn btn-primary">Guardar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="pt-2">
-    <div class="row pt-5">
         <div class="col-6 text-right">
-            <button [routerLink]="['history']"         
+            <button [routerLink]="['history']"
                     class="btn btn-primary">Historico</button>
         </div>
         <div class="col-6">
-            <button [routerLink]="['home']" 
-                    class="btn btn-primary">Finalizar</button>
+            <button class="btn btn-primary" (click)="finishDialog()">Finalizar</button>
         </div>
     </div>
-    
 </div>
+<div class="bg-light">
 
-
-
+</div>

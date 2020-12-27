@@ -17,7 +17,8 @@ export class SlideshowComponent implements OnInit {
   @Output()
   selectedCard = new EventEmitter();
 
-  showAdd = true;
+  @Input()
+  showAdd: boolean;
 
   constructor() { }
 
@@ -30,8 +31,22 @@ export class SlideshowComponent implements OnInit {
       loop: true,
       effect: 'coverflow',
       grabCursor: true,
-      slidesPerView: 2,
-      spaceBetween: 350,
+      slidesPerView: 1,
+      spaceBetween: 240,
+      breakpoints: {
+        // col-md
+        1200: {
+          slidesPerView: 1.3
+        },
+        // col-lg
+        1700: {
+          slidesPerView: 1.6
+        },
+        // col-xl
+        2300: {
+          slidesPerView: 2,
+        }
+      },
       centeredSlides: true,
       observer: true,
       observeParents: true,
@@ -39,7 +54,7 @@ export class SlideshowComponent implements OnInit {
       coverflowEffect: {
         rotate: 0,
         stretch: 0,
-        depth: 500,
+        depth: 400,
         modifier: 1,
         slideShadows : true,
       },
@@ -62,10 +77,7 @@ export class SlideshowComponent implements OnInit {
     const currentSlide = this.mySwiper.activeIndex;
     this.mySwiper.activeIndex = 0;
     this.selectedCard.emit({ card: this.cards[currentSlide] });
-    
-    if (this.cards[currentSlide].type === 'Catalyst') {
-      this.showAdd = false;
-    }
+
   }
-  
+
 }

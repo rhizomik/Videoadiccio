@@ -1,0 +1,89 @@
+
+<app-navbar [message]="title" [isTitle]="true"></app-navbar>
+
+<div class="container-fluid pt-5 text-center">
+    <div class="row">
+        <div class="col-6">
+            <div class="col-12 p-5 shadow-lg bg-light rounded">
+                <h2 class="pb-2">En progreso</h2>
+
+                <div *ngIf="pendingSessions.length === 0">
+                    <h6>No hay sesiones en progreso</h6>
+                </div>
+
+                <table *ngIf="pendingSessions.length !== 0"
+                       class="table bg-white shadow rounded">
+                    <thead>
+                        <tr>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Juego</th>
+                            <th scope="col">Nº de relaciones</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let session of pendingSessions">
+                            <td>{{session.user}}</td>
+                            <td>{{session.game}}</td>
+                            <td>{{session.historyRelations.length}}</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary py-0 btn-block"
+                                        (click)="resumeSession(session)">Reanudar</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-primary py-0 btn-block"
+                                        (click)="deleteDialog(session, true)">Eliminar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="col-12 p-5 shadow-lg bg-light rounded">
+                <h2 class="pb-2">Finalizadas</h2>
+
+                <div *ngIf="finishSessions.length === 0">
+                    <h6>No hay sesiones en progreso</h6>
+                </div>
+
+                <table  *ngIf="finishSessions.length !== 0"
+                        class="table bg-white shadow rounded">
+                    <thead>
+                        <tr>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Juego</th>
+                            <th scope="col">Nº de relaciones</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let session of finishSessions">
+                            <td>{{session.user}}</td>
+                            <td>{{session.game}}</td>
+                            <td>{{session.historyRelations.length}}</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary py-0 btn-block"
+                                        (click)="viewHistory(session)">Historico</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-primary py-0 btn-block"
+                                        (click)="deleteDialog(session, false)">Eliminar</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-primary py-0 btn-block"
+                                        (click)="sendSession(session)">Enviar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="finishSessions.length !== 0" class="pt-2">
+                    <button class="btn btn-primary" (click)="exportSessions()">Exportar sesiones</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

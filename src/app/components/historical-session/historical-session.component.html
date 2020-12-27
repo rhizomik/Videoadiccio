@@ -1,27 +1,39 @@
 
 <div class="row text-center">
-    <div class="col-4">
-        <div [class.zoom]="!disabledCards && active.hook.name !== 'default'">
-            <img [ngStyle]="{'opacity': disabledCards ? '0.2' : '1'}"  
-                 *ngIf="active.hook" 
-                 [src]="active.hook.content" 
-                 class="img-fluid">
+    <div class="col-4 pb-4">
+        <h6 *ngIf="showTitleType"
+            class="pt-3 pb-1">Hook</h6>
+
+        <div [class.zoom]="!disabledCards && active.hook.name !== 'default'"
+             class="shadow rounded">
+            <img [ngStyle]="{'opacity': disabledCards ? '0.2' : '1'}"
+                 *ngIf="active.hook"
+                 [src]="active.hook.content"
+                 class="img-fluid rounded">
         </div>
     </div>
     <div class="col-4">
-        <div [class.zoom]="!disabledCards">
-            <img [ngStyle]="{'opacity': disabledCards ? '0.2' : '1'}" 
-                 *ngIf="active.risc" 
-                 [src]="active.risc.content" 
-                 class="img-fluid">
+        <h6 *ngIf="showTitleType"
+            class="pt-3 pb-1">Risk</h6>
+
+        <div [class.zoom]="!disabledCards && active.risc.name !== 'default'"
+             class="shadow rounded">
+            <img [ngStyle]="{'opacity': disabledCards ? '0.2' : '1'}"
+                 *ngIf="active.risc"
+                 [src]="active.risc.content"
+                 class="img-fluid rounded">
         </div>
     </div>
     <div class="col-4">
-        <div [class.zoom]="!disabledCards">
-            <img [ngStyle]="{'opacity': disabledCards ? '0.2' : '1'}" 
-                 *ngIf="active.catalyst" 
-                 [src]="active.catalyst.content" 
-                 class="img-fluid">
+        <h6 *ngIf="showTitleType"
+            class="pt-3 pb-1">Catalyst</h6>
+
+        <div [class.zoom]="!disabledCards && active.catalyst.name !== 'default'"
+             class="shadow rounded">
+            <img [ngStyle]="{'opacity': disabledCards ? '0.2' : '1'}"
+                 *ngIf="active.catalyst"
+                 [src]="active.catalyst.content"
+                 class="img-fluid rounded">
         </div>
     </div>
 </div>

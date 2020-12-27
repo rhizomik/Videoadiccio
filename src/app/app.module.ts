@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -13,6 +15,9 @@ import { SessionComponent } from './pages/session/session.component';
 import { SlideshowComponent } from './components/slideshow/slideshow.component';
 import { HistoricalSessionComponent } from './components/historical-session/historical-session.component';
 import { HistoryRelationsComponent } from './pages/history-relations/history-relations.component';
+import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
+import { HistorySessionsComponent } from './pages/history-sessions/history-sessions.component';
+import { DialogBoxEmailComponent } from './components/dialog-box-email/dialog-box-email.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +28,23 @@ import { HistoryRelationsComponent } from './pages/history-relations/history-rel
     SessionComponent,
     SlideshowComponent,
     HistoricalSessionComponent,
-    HistoryRelationsComponent
+    HistoryRelationsComponent,
+    DialogBoxComponent,
+    HistorySessionsComponent,
+    DialogBoxEmailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule,
+    BrowserAnimationsModule
+  ],
+  entryComponents: [
+    DialogBoxComponent,
+    DialogBoxEmailComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
